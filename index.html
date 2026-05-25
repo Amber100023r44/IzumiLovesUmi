@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>For Asmita — always.</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@200;300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<!-- ░░░ CURSOR ░░░ -->
+<div id="cursor"></div>
+<div id="cursor-trail"></div>
+
+<!-- ░░░ CANVAS (particles) ░░░ -->
+<canvas id="bg-canvas"></canvas>
+
+<!-- ░░░ INTRO SPLASH ░░░ -->
+<div id="splash">
+  <div class="splash-inner">
+    <div class="splash-ring"></div>
+    <div class="splash-ring r2"></div>
+    <div class="splash-ring r3"></div>
+    <p class="splash-eyebrow">opening something special…</p>
+    <h1 class="splash-name">Asmita</h1>
+    <p class="splash-sub">this was made entirely for you</p>
+  </div>
+</div>
+
+<!-- ░░░ MAIN PAGE ░░░ -->
+<div id="page" class="hidden">
+
+  <!-- ████ HERO ████ -->
+  <section class="hero" id="hero">
+    <div class="hero-bg-text" aria-hidden="true">LOVE</div>
+    <div class="hero-content">
+      <p class="eyebrow fade-up d1">✦ a little something, just for you ✦</p>
+      <h1 class="hero-title fade-up d2">To my dear<br/><em>Asmita,</em><br/><span class="hero-subtitle">the love of my life.</span></h1>
+      <p class="hero-body fade-up d3">This little corner of the internet exists entirely because of you — built out of love, admiration, and so much pride.</p>
+      <div class="hero-btns fade-up d4">
+        <button class="btn-primary" id="open-note-btn">
+          <span class="btn-icon">💌</span>
+          <span>Open a Love Note</span>
+          <span class="btn-arrow">→</span>
+        </button>
+        <button class="btn-ghost" id="scroll-down-btn">
+          <span>Explore</span>
+          <span class="btn-chevron">↓</span>
+        </button>
+      </div>
+    </div>
+    <div class="hero-side fade-up d5">
+      <div class="hero-orb">
+        <div class="orb-inner">
+          <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" class="heart-svg">
+            <path d="M80 130 C40 105 10 82 10 52 C10 28 28 10 52 10 C63 10 73 15 80 24 C87 15 97 10 108 10 C132 10 150 28 150 52 C150 82 120 105 80 130Z" fill="url(#hg)"/>
+            <defs>
+              <radialGradient id="hg" cx="40%" cy="35%">
+                <stop offset="0%" stop-color="#ff8fab"/>
+                <stop offset="100%" stop-color="#c2185b"/>
+              </radialGradient>
+            </defs>
+          </svg>
+          <span class="orb-count" id="orb-count">0</span>
+          <span class="orb-label">kisses sent</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">scroll ↓</div>
+  </section>
+
+  <!-- ████ LOVE NOTE MODAL ████ -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal" id="modal">
+      <button class="modal-x" id="modal-close-x" aria-label="close">✕</button>
+      <div class="modal-envelope" id="modal-env">
+        <div class="env-flap"></div>
+        <div class="env-body">
+          <div class="env-letter" id="env-letter">
+            <div class="letter-top">
+              <span class="letter-icon" id="note-icon">💌</span>
+            </div>
+            <p class="letter-msg" id="note-msg">Loading love…</p>
+            <p class="letter-sub" id="note-sub"></p>
+            <div class="letter-sig">— always yours 🌹</div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="btn-primary sm" id="next-note-btn"><span>Another ↻</span></button>
+        <button class="btn-ghost sm" id="keep-note-btn"><span>Keep it ♡</span></button>
+      </div>
+      <div class="modal-progress" id="modal-progress">
+        <span class="mp-dot active" data-i="0"></span>
+        <span class="mp-dot" data-i="1"></span>
+        <span class="mp-dot" data-i="2"></span>
+        <span class="mp-dot" data-i="3"></span>
+        <span class="mp-dot" data-i="4"></span>
+        <span class="mp-dot" data-i="5"></span>
+        <span class="mp-dot" data-i="6"></span>
+        <span class="mp-dot" data-i="7"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ████ TICKER ████ -->
+  <div class="ticker-wrap" aria-hidden="true">
+    <div class="ticker" id="ticker"></div>
+  </div>
+
+  <!-- ████ CARDS ████ -->
+  <section class="section" id="sec-cards">
+    <div class="sec-label reveal">✦ words from my heart ✦</div>
+    <h2 class="sec-title reveal">Things I need you<br/>to <em>know</em></h2>
+    <div class="sec-line reveal"></div>
+    <div class="cards-grid" id="cards-grid"></div>
+  </section>
+
+  <!-- ████ PRIDE QUOTE ████ -->
+  <section class="section pride-section" id="sec-pride">
+    <div class="pride-wrap reveal">
+      <div class="pride-quote-mark">"</div>
+      <blockquote class="pride-quote">
+        You are doing so good. Every hard all-nighter, every moment you doubt if you can do it — I see it all. And every single day, I am in complete awe of how you just go through them and still come out better. You are so strong, smart and so deeply capable. I believe in you completely.
+      </blockquote>
+      <p class="pride-sig">— Your biggest fan, always 🌸</p>
+      <div class="pride-deco">pride</div>
+    </div>
+  </section>
+
+  <!-- ████ ENCOURAGEMENTS ████ -->
+  <section class="section" id="sec-enc">
+    <div class="sec-label reveal">✦ reminders ✦</div>
+    <h2 class="sec-title reveal">For when you need it <em>most</em></h2>
+    <div class="sec-line reveal"></div>
+    <div class="enc-grid" id="enc-grid"></div>
+  </section>
+
+  <!-- ████ STARS ████ -->
+  <section class="section stars-section" id="sec-stars">
+    <div class="sec-label reveal">✦ tell me ✦</div>
+    <h2 class="sec-title reveal">How loved do you feel <em>right now?</em></h2>
+    <div class="sec-line reveal"></div>
+    <div class="stars-row" id="stars-row"></div>
+    <div class="star-response" id="star-response">
+      <p class="star-msg" id="star-msg"></p>
+    </div>
+  </section>
+
+  <!-- ████ KISS LAB ████ -->
+  <section class="section kiss-section" id="sec-kiss">
+    <div class="sec-label reveal">✦ press repeatedly ✦</div>
+    <h2 class="sec-title reveal">Send a kiss <em>across the distance</em></h2>
+    <div class="sec-line reveal"></div>
+    <div class="kiss-arena">
+      <button class="kiss-btn" id="kiss-btn" aria-label="Send a kiss">
+        <span class="kiss-icon">💋</span>
+        <span class="kiss-ripple"></span>
+        <span class="kiss-ripple r2"></span>
+      </button>
+      <p class="kiss-counter">You've sent <strong id="kiss-num">0</strong> kisses 💕</p>
+      <div class="kiss-burst" id="kiss-burst"></div>
+    </div>
+  </section>
+
+  <!-- ████ FINAL ████ -->
+  <section class="final-section" id="sec-final">
+    <div class="final-bg-text" aria-hidden="true">YOURS</div>
+    <div class="final-content reveal">
+      <p class="eyebrow">✦ always &amp; forever ✦</p>
+      <h2 class="final-title">I am so glad<br/><em>you are mine.</em></h2>
+      <p class="final-body">The world got a little brighter the day you walked into my life. I don't take a single second with you for granted. You are going to absolutely crush whatever is ahead of you — I know it in my bones. And no matter what, I'll be right here cheering the loudest, catching you if you fall, and loving you harder every single day.</p>
+      <p class="final-sig">All my love, always.</p>
+      <button class="btn-primary lg" id="restart-btn">
+        <span>From the beginning ↺</span>
+      </button>
+    </div>
+  </section>
+
+</div><!-- /page -->
+
+<script src="app.js"></script>
+</body>
+</html>
